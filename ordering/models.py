@@ -11,7 +11,7 @@ class Order(models.Model):
     date_ordered = models.DateTimeField('date ordered')
 
     def __str__(self):
-        return str(self.id) + " " + self.date_ordered.__str__()
+        return "Order #%s: %s" % (str(self.id), self.date_ordered.__str__())
 
 
 class User(models.Model):
