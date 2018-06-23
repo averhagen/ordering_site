@@ -8,4 +8,4 @@ class Order(models.Model):
     date_ordered = models.DateTimeField('date ordered')
 
 class User(models.Model):
-    email = models.EmailField()
+    email = models.EmailField(unique = True)
