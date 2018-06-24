@@ -1,12 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-flow: column nowrap;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .heading {
+            display: flex;
+            align-items: center;
+            min-height: 50px;
+            max-height: 50px;
+            background: #d9d3c8;
+        }
+
+        .heading-title {
+            margin: 0;
+        }
+
+        .content {
+            flex-flow: row nowrap;
+            flex-grow: 1;
+            display: flex;
+        }
+
+        .content-left-menu {
+            min-width: 100px;
+            background: whitesmoke;
+        }
+
+        .content-middle {
+            flex-grow: 1;
+            background: white;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello Ordering Index Page</h1>
+    <div class="heading">
+        <h1 class="heading-title">Order-It</h1>
+    </div>
+    <div class="content">
+        <div class="content-left-menu"></div>
+        <div class="content-middle"></div>
+    </div>
 </body>
+
 </html>
