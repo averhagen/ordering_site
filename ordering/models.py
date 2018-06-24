@@ -22,7 +22,8 @@ class User(models.Model):
 
 
 class Store(models.Model):
-    name = models.CharField(max_length = 200)
+    display_name = models.CharField(max_length = 200)
+    url_identifying_name = models.CharField(max_length = 20)
 
     def __str__(self):
         return self.name
