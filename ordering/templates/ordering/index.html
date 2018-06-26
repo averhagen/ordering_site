@@ -34,14 +34,21 @@
         }
 
         .content-left-menu {
+            border-right: 1px solid rgb(173, 173, 173);
             min-width: 100px;
             background: whitesmoke;
+        }
+
+        .left-menu-option {
+
         }
 
         .content-middle {
             flex-grow: 1;
             background: white;
         }
+
+        
     </style>
 </head>
 
@@ -50,7 +57,13 @@
         <h1 class="heading-title">{{ store.display_name }}</h1>
     </div>
     <div class="content">
-        <div class="content-left-menu"></div>
+        <div class="content-left-menu">
+            <ul>
+                {% for choice in menuchoices %}
+                    <li><a>{{ choice }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
         <div class="content-middle"></div>
     </div>
 </body>
