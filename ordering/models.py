@@ -27,6 +27,9 @@ class Store(models.Model):
 
     def __str__(self):
         return self.display_name
+    
+    def get_menu_options_sorted_by_display_order(self):
+        return self.storemenuoption_set.all().order_by('display_order')
 
 class StoreMenuOption(models.Model):
     display_name = models.CharField(max_length = 20)
