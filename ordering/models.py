@@ -27,3 +27,8 @@ class Store(models.Model):
 
     def __str__(self):
         return self.display_name
+
+class StoreMenuOption(models.Model):
+    display_name = models.CharField(max_length = 20)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE)
+    display_order = models.IntegerField()
