@@ -59,7 +59,7 @@
     <div class="content">
         <div class="content-left-menu">
             <ul>
-                {% for choice in store.storemenuoption_set.all %}
+                {% for choice in store.get_menu_options_sorted_by_display_order %}
                     <li><a>{{ choice.display_name }}</a></li>
                 {% endfor %}
             </ul>
