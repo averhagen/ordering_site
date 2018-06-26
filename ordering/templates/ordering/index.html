@@ -59,8 +59,8 @@
     <div class="content">
         <div class="content-left-menu">
             <ul>
-                {% for choice in menuchoices %}
-                    <li><a>{{ choice }}</a></li>
+                {% for choice in store.storemenuoption_set.all %}
+                    <li><a>{{ choice.display_name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
