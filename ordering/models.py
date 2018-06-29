@@ -43,3 +43,6 @@ class StoreCategory(models.Model):
 class StoreCategoryProduct(models.Model):
     store_category = models.ForeignKey(StoreCategory, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%s : %s" % (self.store_category.__str__(), self.product.__str__())
