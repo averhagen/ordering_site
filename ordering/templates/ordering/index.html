@@ -75,6 +75,11 @@
             </ul>
         </div>
         <div class="content-middle">
+            {% if category %}
+                {% for product in category.get_products %}
+                    <p>a</p>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 </body>
