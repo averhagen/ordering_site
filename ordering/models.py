@@ -29,9 +29,9 @@ class Store(models.Model):
         return self.display_name
     
     def get_menu_options_sorted_by_display_order(self):
-        return self.storemenuoption_set.all().order_by('display_order')
+        return self.storecategory_set.all().order_by('display_order')
 
-class StoreMenuOption(models.Model):
+class StoreCategory(models.Model):
     display_name = models.CharField(max_length = 20)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     display_order = models.IntegerField()
