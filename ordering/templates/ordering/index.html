@@ -67,14 +67,15 @@
     <div class="content">
         <div class="content-left-menu">
             <ul class="left-menu-list">
-                {% for choice in store.get_menu_options_sorted_by_display_order %}
+                {% for category in store.get_menu_options_sorted_by_display_order %}
                 <li class="left-menu-list-item">
-                    <a class="left-menu-selection">{{ choice.display_name }}</a>
+                    <a href="{% url 'ordering:index' store.url_identifying_name category.id %}" class="left-menu-selection">{{ category.display_name }}</a>
                 </li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="content-middle"></div>
+        <div class="content-middle">
+        </div>
     </div>
 </body>
 
