@@ -40,6 +40,12 @@ class StoreCategory(models.Model):
     def __str__(self):
         return self.display_name
 
+    def get_products(self):
+        category_products = StoreCategoryProduct.objects.filter(store_category = self.id)
+        product_ids = [category_product.product.id for category_product in category_products]
+        products = Product.objects.filter(id__in=product_ids)
+        return products
+
 class StoreCategoryProduct(models.Model):
     store_category = models.ForeignKey(StoreCategory, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
