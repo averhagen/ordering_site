@@ -31,6 +31,7 @@ class Store(models.Model):
     def get_menu_options_sorted_by_display_order(self):
         return self.storecategory_set.all().order_by('display_order')
 
+
 class StoreCategory(models.Model):
     display_name = models.CharField(max_length = 20)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
@@ -38,3 +39,7 @@ class StoreCategory(models.Model):
 
     def __str__(self):
         return self.display_name
+
+class StoreCategoryProduct(models.Model):
+    store_category = models.ForeignKey(StoreCategory, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
