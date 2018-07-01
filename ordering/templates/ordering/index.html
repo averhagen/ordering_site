@@ -77,7 +77,7 @@
         <div class="content-middle">
             {% if category %}
                 {% for product in category.get_products %}
-                    <p>a</p>
+                    <p>{{ product.name }}</p>
                 {% endfor %}
             {% endif %}
         </div>
