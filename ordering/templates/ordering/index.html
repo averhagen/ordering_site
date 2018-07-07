@@ -108,7 +108,6 @@
         .action:hover {
             opacity: 1;
         }
-        
     </style>
 </head>
 
@@ -116,7 +115,9 @@
     <div class="heading">
         <h1 class="heading-title">{{ store.display_name }}</h1>
     </div>
+
     <div class="content">
+
         <div class="content-left-menu">
             <ul class="left-menu-list">
                 {% for category in store.get_menu_options_sorted_by_display_order %}
@@ -126,24 +127,27 @@
                 {% endfor %}
             </ul>
         </div>
+
         <div class="content-middle">
-            {% if category %}
-                {% for product in category.get_products %}
-                <div class = "product-selection">
-                    <div class = "product-image-container">
-                        <div class = "product-image">
-                            
+            {% if category %} {% for product in category.get_products %}
+            <div class="product-selection">
+                <div class="product-image-container">
+                    <div class="product-image">
+
+                    </div>
+                    <div class="actions">
+                        <div class="action info">
+                            <i class="material-icons">zoom_in</i>
                         </div>
-                        <div class="actions">
-                            <div class="action info"><i class="material-icons">zoom_in</i></div>
-                            <div class="action add"><i class="material-icons">add_shopping_cart</i></div>
+                        <div class="action add">
+                            <i class="material-icons">add_shopping_cart</i>
                         </div>
                     </div>
-                    <p>{{ product.name }}</p>
-                    <p>Price: {{ product.price }}</p>
                 </div>
-                {% endfor %}
-            {% endif %}
+                <p>{{ product.name }}</p>
+                <p>Price: {{ product.price }}</p>
+            </div>
+            {% endfor %} {% endif %}
         </div>
     </div>
 </body>
