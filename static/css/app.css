@@ -104,3 +104,9 @@
         .action:hover {
             opacity: 1;
         }
+
+/*          ICON RULES          */
+        
+        .icon-button {
+            cursor: pointer;
+        }
