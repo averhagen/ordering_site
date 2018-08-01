@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-{% load static %}
+<!DOCTYPE html> {% load static %}
 <html lang="en">
 
 <head>
@@ -9,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{% static 'dist/css/bundle.css' %}">
     <title>Order-It</title>
-    
+
 </head>
 
 <body>
@@ -28,7 +27,11 @@
             <ul class="left-menu-list">
                 {% for category in store.get_menu_options_sorted_by_display_order %}
                 <li class="left-menu-list-item">
-                    <a href="{% url 'ordering:index' store.url_identifying_name category.id %}" class="left-menu-selection">{{ category.display_name }}</a>
+                    <a href="{% url 'ordering:index' store.url_identifying_name category.id %}" class="left-menu-selection">
+                        <div>
+                            {{ category.display_name }}
+                        </div>
+                    </a>
                 </li>
                 {% endfor %}
             </ul>
