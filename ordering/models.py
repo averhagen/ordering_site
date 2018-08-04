@@ -36,6 +36,10 @@ class Order(models.Model):
     def __str__(self):
         return "Order #%s: %s" % (str(self.id), self.date_ordered.__str__())
 
+    @staticmethod
+    def find_orders_for_store_and_user(user_id, store_id):
+        return Order.objects.filter(store__id=store_id).filter(user__id=user_id)
+
 
 class StoreCategory(models.Model):
     display_name = models.CharField(max_length=20)

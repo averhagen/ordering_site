@@ -53,6 +53,18 @@
             opacity: 1;
         }
 
+        .icon-notification {
+            position: absolute;
+            top:0px;
+            right: 0px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: blue;
+            line-height: 12px;
+            opacity: 100%;
+        }
+
 /*          Heading End               */
 
         .content {

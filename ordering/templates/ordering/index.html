@@ -21,6 +21,11 @@
                 <a href="">
                     <i class="icon-button material-icons">shopping_cart</i>
                 </a>
+                {% if orders %}
+                    <div class="icon-notification">
+                        1
+                    </div>
+                {% endif %}
             </li>
         </ol>
     </header>
@@ -60,7 +65,9 @@
                 <p>{{ product.name }}</p>
                 <p>Price: {{ product.price }}</p>
             </div>
+
             {% endfor %} {% endif %}
+
         </div>
     </div>
 </body>
