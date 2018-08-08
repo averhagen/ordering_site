@@ -34,11 +34,11 @@
 
         <div class="content-left-menu">
             <ul class="left-menu-list">
-                {% for category in store.get_menu_options_sorted_by_display_order %}
-                <li class="left-menu-list-item">
-                    <a href="{% url 'ordering:index' store.url_identifying_name category.id %}" class="left-menu-selection">
+                {% for category_selection in store.get_menu_options_sorted_by_display_order %}
+                <li class="left-menu-list-item {% if category and category.id == category_selection.id %}active-menu-selection{% endif %}">
+                    <a href="{% url 'ordering:index' store.url_identifying_name category_selection.id %}" class="left-menu-selection">
                         <div>
-                            {{ category.display_name }}
+                            {{ category_selection.display_name }}
                         </div>
                     </a>
                 </li>

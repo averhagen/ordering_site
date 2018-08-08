@@ -96,6 +96,16 @@
             font-size: 1.1em;
         }
 
+        .active-menu-selection {
+            font-weight: bolder;
+            font-size: 1.2em;
+            opacity: 1;
+        }
+
+        .active-menu-selection:hover {
+            font-size: 1.4em;
+        }
+
         .left-menu-selection {
             text-decoration: none;
         }
