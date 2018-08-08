@@ -34,27 +34,28 @@
         }
 
         .account-bar a {
+            opacity: .5;
             height: 100%;
             display: inline-flex;
             text-decoration: none;
             align-items: center;
         }
 
+        .account-bar a:hover {
+            opacity: 1;
+        }
+
         .account-bar a:visited {
             color: black;
         }
 
-        .account-bar li {
-            opacity: .5;
-        }
-
         .account-bar li:hover {
-            background-color: white;
             opacity: 1;
         }
 
         .icon-notification {
             position: absolute;
+            text-align: center;
             top:0px;
             right: 0px;
             width: 16px;
