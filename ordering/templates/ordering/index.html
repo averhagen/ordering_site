@@ -22,9 +22,9 @@
                     <i class="icon-button material-icons">shopping_cart</i>
                 </a>
                 {% if orders %}
-                    <div class="icon-notification">
-                        1
-                    </div>
+                <div class="icon-notification">
+                    1
+                </div>
                 {% endif %}
             </li>
         </ol>
@@ -46,8 +46,9 @@
             </ul>
         </div>
 
-        <div class="content-middle">
-            {% if category %} {% for product in category.get_products %}
+        {% if category %}
+        <form action="{% url 'ordering:add_to_cart' store.url_identifying_name category.id %}" method="POST" class="content-middle">
+            {% csrf_token %} {% for product in category.get_products %}
             <div class="product-selection">
                 <div class="product-image-container">
                     <div class="product-image">
@@ -57,18 +58,16 @@
                         <div class="icon-button action info">
                             <i class="material-icons">zoom_in</i>
                         </div>
-                        <div class="icon-button action add">
-                            <i class="material-icons">add_shopping_cart</i>
-                        </div>
+                        <button name="product_to_add" type="submit" value="{{ product.id }}" class="material-icons icon-button action add">add_shopping_cart</button>
                     </div>
                 </div>
                 <p>{{ product.name }}</p>
                 <p>Price: {{ product.price }}</p>
             </div>
+            {% endfor %}
+        </form>
+        {% endif %}
 
-            {% endfor %} {% endif %}
-
-        </div>
     </div>
 </body>
 
