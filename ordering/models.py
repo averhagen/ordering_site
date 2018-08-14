@@ -29,6 +29,16 @@ class Store(models.Model):
 
 
 class Order(models.Model):
+    ORDER_STATES = (
+        ('IC', 'In-Cart'),
+        ('OR', 'Ordered'),
+        ('CM', 'Completed')
+    )
+    order_state = models.CharField(
+        max_length=2,
+        choices=ORDER_STATES,
+        default='IC',
+    )
     date_ordered = models.DateTimeField('date ordered')
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     store = models.ForeignKey(Store, null=True, on_delete=models.CASCADE)
@@ -39,6 +49,10 @@ class Order(models.Model):
     @staticmethod
     def find_orders_for_store_and_user(user_id, store_id):
         return Order.objects.filter(store__id=store_id).filter(user__id=user_id)
+
+    @staticmethod
+    def get_order_in_cart_for_user(user_pk):
+        return Order.objects.filter(order__state='IC').filter(user__id=user_pk)
 
 
 class OrderProduct(models.Model):
