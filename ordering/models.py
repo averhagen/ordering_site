@@ -41,6 +41,13 @@ class Order(models.Model):
         return Order.objects.filter(store__id=store_id).filter(user__id=user_id)
 
 
+class OrderProduct(models.Model):
+    """Represents an instance of a product on a particular order."""
+    order = models.ForeignKey(Order, null=False, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, null=False, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+
+
 class Category(models.Model):
     display_name = models.CharField(max_length=20)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
