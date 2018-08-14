@@ -49,6 +49,18 @@ class StoreCategory(models.Model):
     def __str__(self):
         return self.display_name
 
+    @staticmethod
+    def find_category_given_category_pk_and_store_pk(category_pk, store_pk):
+        category = None
+        if isinstance(category_pk, int):
+            try:
+                category = StoreCategory.objects.get(pk=category_pk)
+                if category.store.id != store_pk:
+                    category = None
+            except StoreCategory.DoesNotExist:
+                pass
+        return category
+
     def get_products(self):
         category_products = StoreCategoryProduct.objects.filter(
             store_category=self.id)
