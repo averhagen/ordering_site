@@ -25,7 +25,7 @@ class Store(models.Model):
         return self.display_name
 
     def get_menu_options_sorted_by_display_order(self):
-        return self.storecategory_set.all().order_by('display_order')
+        return self.category_set.all().order_by('display_order')
 
 
 class Order(models.Model):
@@ -41,7 +41,7 @@ class Order(models.Model):
         return Order.objects.filter(store__id=store_id).filter(user__id=user_id)
 
 
-class StoreCategory(models.Model):
+class Category(models.Model):
     display_name = models.CharField(max_length=20)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     display_order = models.IntegerField()
@@ -54,10 +54,10 @@ class StoreCategory(models.Model):
         category = None
         if isinstance(category_pk, int):
             try:
-                category = StoreCategory.objects.get(pk=category_pk)
+                category = Category.objects.get(pk=category_pk)
                 if category.store.id != store_pk:
                     category = None
-            except StoreCategory.DoesNotExist:
+            except Category.DoesNotExist:
                 pass
         return category
 
@@ -71,7 +71,7 @@ class StoreCategory(models.Model):
 
 
 class StoreCategoryProduct(models.Model):
-    store_category = models.ForeignKey(StoreCategory, on_delete=models.CASCADE)
+    store_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
