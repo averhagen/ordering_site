@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Store, Category, Order
+from .models import Store, Category, OrderProduct
 
 logging.basicConfig(filename='views.log', level=logging.DEBUG)
 
@@ -18,10 +18,9 @@ def index(request, store_identifier, store_category_id=''):
     category = Category.find_category_given_category_pk_and_store_pk(
         category_pk=store_category_id, store_pk=store_result.id)
 
-    orders = Order.find_orders_for_store_and_user(
-        user_id=1, store_id=store_result.id)
+    products_in_cart = OrderProduct.get_products_in_cart_for_user(user_pk=1)
 
-    context = {'store': store_result, 'category': category, 'orders': orders}
+    context = {'store': store_result, 'category': category, 'products_in_cart': products_in_cart}
     return render(request, 'ordering/index.html', context)
 
 

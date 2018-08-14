@@ -1,6 +1,10 @@
 from django.db import models
 from djmoney.models.fields import MoneyField
 
+import logging
+
+logging.basicConfig(filename='models.log', level=logging.DEBUG)
+
 
 class Product(models.Model):
     name = models.CharField(max_length=200)
@@ -48,11 +52,17 @@ class Order(models.Model):
 
     @staticmethod
     def find_orders_for_store_and_user(user_id, store_id):
+        """Returns the orders that belong to the given store and user."""
         return Order.objects.filter(store__id=store_id).filter(user__id=user_id)
 
     @staticmethod
     def get_order_in_cart_for_user(user_pk):
-        return Order.objects.filter(order__state='IC').filter(user__id=user_pk)
+        """Returns the order that represents the users cart."""
+        logging.debug('get_order_in_cart_for_user called')
+        order_in_cart = Order.objects.filter(
+            order_state='IC').filter(user__id=user_pk).first()
+        logging.debug('order_in_cart: %s', order_in_cart)
+        return order_in_cart
 
 
 class OrderProduct(models.Model):
@@ -60,6 +70,15 @@ class OrderProduct(models.Model):
     order = models.ForeignKey(Order, null=False, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, null=False, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
+
+    @staticmethod
+    def get_products_in_cart_for_user(user_pk):
+        """Returns all the products in a user's cart."""
+        order_in_cart = Order.get_order_in_cart_for_user(user_pk)
+        products_found_in_cart = OrderProduct.objects.filter(
+            order__id=order_in_cart.id)
+        logging.debug('products found in cart: %s', products_found_in_cart)
+        return products_found_in_cart
 
 
 class Category(models.Model):

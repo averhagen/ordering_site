@@ -21,9 +21,9 @@
                 <a href="">
                     <i class="icon-button material-icons">shopping_cart</i>
                 </a>
-                {% if orders %}
+                {% if products_in_cart %}
                 <div class="icon-notification">
-                    1
+                    {{ products_in_cart|length }}
                 </div>
                 {% endif %}
             </li>
