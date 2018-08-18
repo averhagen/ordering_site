@@ -11,14 +11,14 @@
 
         .heading {
             display: flex;
-            height: 30px;
+            height: 50px;
             align-items: center;
             background: #d9d3c8;
             width: 100%;
         }
 
         .heading-title {
-            min-width:  180px;
+            min-width:  500px;
             margin: 0;
         }
 
@@ -53,16 +53,21 @@
             opacity: 1;
         }
 
+        .nav-button {
+            font-size: 2.0em;
+        }
+
         .icon-notification {
-            position: absolute;
+            position: relative;
             text-align: center;
-            top:0px;
-            right: 0px;
-            width: 16px;
-            height: 16px;
+            bottom: 50px;
+            left: 20px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: blue;
-            line-height: 12px;
+            color: white;
+            line-height: 15px;
             opacity: 100%;
         }
 
