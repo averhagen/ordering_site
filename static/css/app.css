@@ -115,6 +115,10 @@
             text-decoration: none;
         }
 
+        .left-menu-selection:link {
+            color: black;
+        }
+
         .left-menu-selection:visited {
             color: black;
         }
