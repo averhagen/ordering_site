@@ -6,7 +6,7 @@ from django.urls import reverse
 
 from .models import Store, Category, OrderProduct
 
-logging.basicConfig(filename='views.log', level=logging.DEBUG)
+logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 
 
 def index(request, store_identifier, store_category_id=''):

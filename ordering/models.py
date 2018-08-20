@@ -3,8 +3,6 @@ from djmoney.models.fields import MoneyField
 
 import logging
 
-logging.basicConfig(filename='models.log', level=logging.DEBUG)
-
 
 class Product(models.Model):
     name = models.CharField(max_length=200)
