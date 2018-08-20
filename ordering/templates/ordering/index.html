@@ -47,7 +47,7 @@
         </div>
 
         {% if category %}
-        <form action="{% url 'ordering:add_to_cart' store.url_identifying_name category.id %}" method="POST" class="content-middle">
+        <form action="{% url 'ordering:add_to_cart' store.id category.id %}" method="POST" class="content-middle">
             {% csrf_token %} {% for product in category.get_products %}
             <div class="product-selection">
                 <div class="product-image-container">
