@@ -26,6 +26,9 @@
                     {{ products_in_cart|length }}
                 </div>
                 {% endif %}
+                <a href="{% url 'logout' %}">
+                    Logout
+                </a>
             </li>
         </ol>
     </header>
