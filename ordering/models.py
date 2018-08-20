@@ -18,6 +18,10 @@ class User(models.Model):
     def __str__(self):
         return self.email
 
+    def add_product_to_cart(self, product_id) -> None:
+        Order.get_order_in_cart_for_user(
+            self.id).add_product_to_order(product_id)
+
 
 class Store(models.Model):
     display_name = models.CharField(max_length=200)
@@ -54,13 +58,19 @@ class Order(models.Model):
         return Order.objects.filter(store__id=store_id).filter(user__id=user_id)
 
     @staticmethod
-    def get_order_in_cart_for_user(user_pk):
+    def get_order_in_cart_for_user(user_pk) -> 'Order':
         """Returns the order that represents the users cart."""
         logging.debug('get_order_in_cart_for_user called')
         order_in_cart = Order.objects.filter(
             order_state='IC').filter(user__id=user_pk).first()
         logging.debug('order_in_cart: %s', order_in_cart)
         return order_in_cart
+
+    def add_product_to_order(self, product_id):
+        added_product = OrderProduct()
+        added_product.order = self
+        added_product.product = Product.objects.get(pk=product_id)
+        added_product.save()
 
 
 class OrderProduct(models.Model):
