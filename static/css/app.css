@@ -71,6 +71,23 @@
             opacity: 100%;
         }
 
+        .logout-button {
+            background: gray;
+            border-radius: 5px;
+            border: solid;
+            border-width: 1px;
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        .logout-button:hover {
+            background: lightgray;
+        }
+
+        .logout-button:visited {
+            color: black;
+        }
+
 /*          Heading End               */
 
         .content {
@@ -94,21 +111,24 @@
 
         .left-menu-list-item {
             opacity: .8;
+            font-size: 1.1em;
         }
 
         .left-menu-list-item:hover {
             opacity: 1;
-            font-size: 1.1em;
+            font-weight: bold;
         }
 
         .active-menu-selection {
             font-weight: bolder;
             font-size: 1.2em;
             opacity: 1;
+            border-right: 5px solid;
+            background: darkgray;
         }
 
         .active-menu-selection:hover {
-            font-size: 1.4em;
+            font-size: 1.2em;
         }
 
         .left-menu-selection {
