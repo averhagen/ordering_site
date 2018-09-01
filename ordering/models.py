@@ -1,5 +1,9 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from djmoney.models.fields import MoneyField
+from django.contrib.auth.models import User
+
 
 import logging
 
@@ -12,15 +16,37 @@ class Product(models.Model):
         return self.name
 
 
-class User(models.Model):
-    email = models.EmailField(unique=True)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.email
+        if(self.user is not None):
+            return self.user.username
+        else:
+            return "hello"
 
     def add_product_to_cart(self, product_id) -> None:
-        Order.get_order_in_cart_for_user(
-            self.id).add_product_to_order(product_id)
+        order_in_cart = Order.get_order_in_cart_for_user(
+            self.user.id)
+            
+        if order_in_cart is None:
+            order_in_cart = Order()
+            order_in_cart.user = self.user
+            order_in_cart.save()
+
+        order_in_cart.add_product_to_order(product_id)
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    if(instance.profile is not None):
+        instance.profile.save()
 
 
 class Store(models.Model):
@@ -45,12 +71,12 @@ class Order(models.Model):
         choices=ORDER_STATES,
         default='IC',
     )
-    date_ordered = models.DateTimeField('date ordered')
+    date_ordered = models.DateTimeField('date ordered', auto_now_add=True)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     store = models.ForeignKey(Store, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Order #%s: %s" % (str(self.id), self.date_ordered.__str__())
+        return "Order #%s: %s %s" % (str(self.id), self.user.__str__(), self.order_state)
 
     @staticmethod
     def find_orders_for_store_and_user(user_id, store_id):
@@ -83,6 +109,9 @@ class OrderProduct(models.Model):
     def get_products_in_cart_for_user(user_pk):
         """Returns all the products in a user's cart."""
         order_in_cart = Order.get_order_in_cart_for_user(user_pk)
+        if order_in_cart is None:
+            return None
+
         products_found_in_cart = OrderProduct.objects.filter(
             order__id=order_in_cart.id)
         logging.debug('products found in cart: %s', products_found_in_cart)
