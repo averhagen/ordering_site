@@ -14,7 +14,7 @@
 <body>
 
     <header class="heading">
-        <h2 class="heading-title">{{ store.display_name }}</h2>
+        <h1 class="heading-title">{{ store.display_name }}</h1>
 
         <ol class="account-bar">
             <li>
@@ -58,9 +58,7 @@
 
                     </div>
                     <div class="actions">
-                        <div class="icon-button action info">
-                            <i class="material-icons">zoom_in</i>
-                        </div>
+                        <button name="more_info" class="material-icons icon-button action">zoom_in</button>
                         <button name="product_to_add" type="submit" value="{{ product.id }}" class="material-icons icon-button action add">add_shopping_cart</button>
                     </div>
                 </div>
