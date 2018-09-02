@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{% static 'dist/css/bundle.css' %}">
     <title>Order-It</title>
@@ -18,14 +19,19 @@
 
         <ol class="account-bar">
             <li>
-                <a href="">
-                    <i class="icon-button nav-button material-icons">shopping_cart</i>
+                <a class="account-bar-button" href="">
+                    <i class="material-icons icon-button nav-button" style="font-size: 1.2em">shopping_cart</i>
                 </a>
                 {% if products_in_cart %}
                 <div class="icon-notification">
                     {{ products_in_cart|length }}
                 </div>
                 {% endif %}
+            </li>
+            <li>
+                <a class="account-bar-button">
+                    <i class="icon-button nav-button material-icons" style="font-size: 1.2em">person</i>
+                </a>
             </li>
         </ol>
         <a href="{% url 'logout' %}" class="logout-button">
