@@ -36,17 +36,12 @@
         .account-bar-button {
             font-size: 2.0em;
             opacity: .5;
-            height: 100%;
             width: 60px;
             height: 60px;
             display: inline-flex;
             text-decoration: none;
             align-items: center;
             justify-content: center;
-        }
-
-        .account-bar-button:hover {
-            opacity: 1;
         }
 
         .account-bar-button:visited {
@@ -67,12 +62,25 @@
             opacity: 100%;
         }
 
+        .profile-button:hover {
+            opacity: 1;
+        }
+
+        .profile-dropper:hover .profile-dropdown {
+            display: block;
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            right: 0px;
+            display: none;
+            z-index: 1;
+        }
+
         .logout-button {
             background: gray;
-            border-radius: 5px;
-            border: solid;
-            border-width: 1px;
-            padding: 10px;
+            padding: 20px 30px;
+            display: block;
             text-decoration: none;
         }
 
@@ -210,3 +218,5 @@
         .icon-button:hover {
             opacity: 1;
         }
+
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
