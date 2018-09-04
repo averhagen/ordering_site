@@ -1,8 +1,3 @@
-import logging
-import datetime
-
-from django.contrib.auth.models import User
-
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -10,25 +5,15 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.urls import urlpatterns
 
+from django.contrib.auth.models import User
 from .models import Store, Category, OrderProduct, Profile
 
-logging.basicConfig(filename='debug.log', level=logging.DEBUG)
-
-
-def logged_function(func):
-    def wrapper(*args, **kwargs):
-        logging.debug(func.__name__ + " START")
-        logging.debug(datetime.datetime.now())
-        result = func(*args, **kwargs)
-        logging.debug(datetime.datetime.now())
-        logging.debug(func.__name__ + " END\n")
-        return result
-    return wrapper
-
+from .utils.logs import logged_function
+import logging
 
 @logged_function
 @login_required
-def index(request, store_identifier, store_category_id=''):
+def store(request, store_identifier, store_category_id=''):
     store_result = get_object_or_404(
         Store, url_identifying_name=store_identifier)
 
