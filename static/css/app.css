@@ -78,14 +78,14 @@
         }
 
         .logout-button {
-            background: gray;
+            background: lightgray;
             padding: 20px 30px;
             display: block;
             text-decoration: none;
         }
 
         .logout-button:hover {
-            background: lightgray;
+            background: gray;
         }
 
         .logout-button:visited {

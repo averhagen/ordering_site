@@ -1,0 +1,82 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'dist/css/bundle.css' %}">
+    <title>Order-It</title>
+
+</head>
+
+<body>
+
+    <header class="heading">
+        <h1 class="heading-title">{{ store.display_name }}</h1>
+
+        <ol class="account-bar">
+            <li>
+                <a class="account-bar-button" href="">
+                    <i class="material-icons icon-button nav-button" style="font-size: 1.2em">shopping_cart</i>
+                </a>
+                {% if products_in_cart %}
+                <div class="icon-notification">
+                    {{ products_in_cart|length }}
+                </div>
+                {% endif %}
+            </li>
+            <li class="profile-dropper">
+                <a class="account-bar-button profile-button">
+                    <i class="icon-button nav-button material-icons" style="font-size: 1.2em">person</i>
+                </a>
+                <div class="profile-dropdown">
+                    <a href="{% url 'logout' %}" class="logout-button">
+                        Logout
+                    </a>
+                </div>
+            </li>
+        </ol>
+
+    </header>
+
+    <div class="content">
+
+        <div class="content-left-menu">
+            <ul class="left-menu-list">
+                {% for category_selection in store.get_menu_options_sorted_by_display_order %}
+                <li class="left-menu-list-item {% if category and category.id == category_selection.id %}active-menu-selection{% endif %}">
+                    <a href="{% url 'ordering:store' store.url_identifying_name category_selection.id %}" class="left-menu-selection">
+                        <div>
+                            {{ category_selection.display_name }}
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        {% if category %}
+        <form action="{% url 'ordering:add_to_cart' store.id category.id %}" method="POST" class="content-middle">
+            {% csrf_token %} {% for product in category.get_products %}
+            <div class="product-selection">
+                <div class="product-image-container">
+                    <div class="product-image">
+
+                    </div>
+                    <div class="actions">
+                        <button name="more_info" class="material-icons icon-button action">zoom_in</button>
+                        <button name="product_to_add" type="submit" value="{{ product.id }}" class="material-icons icon-button action">add_shopping_cart</button>
+                    </div>
+                </div>
+                <p>{{ product.name }}</p>
+                <p>Price: {{ product.price }}</p>
+            </div>
+            {% endfor %}
+        </form>
+        {% endif %}
+
+    </div>
+</body>
+
+</html>

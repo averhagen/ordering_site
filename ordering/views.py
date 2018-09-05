@@ -11,6 +11,18 @@ from .models import Store, Category, OrderProduct, Profile
 from .utils.logs import logged_function
 import logging
 
+from django.http import HttpResponse
+
+@logged_function
+def index(request):
+
+    stores = Store.objects.all()
+
+    context = {'stores': stores }
+    
+    return render(request, 'ordering/index.html', context)
+
+
 @logged_function
 @login_required
 def store(request, store_identifier, store_category_id=''):
@@ -25,7 +37,7 @@ def store(request, store_identifier, store_category_id=''):
 
     context = {'store': store_result, 'category': category,
                'products_in_cart': products_in_cart}
-    return render(request, 'ordering/index.html', context)
+    return render(request, 'ordering/store.html', context)
 
 
 @logged_function
@@ -43,4 +55,4 @@ def add_to_cart(request, store_id, store_category_id):
     except Exception as e:
         logging.error(e.__str__())
 
-    return HttpResponseRedirect(reverse('ordering:index', args=(store_result.url_identifying_name, store_category_id)))
+    return HttpResponseRedirect(reverse('ordering:store', args=(store_result.url_identifying_name, store_category_id)))
