@@ -3,41 +3,9 @@
 {% block title %}
 {{ store.display_name }}
 {% endblock title %}
+
 {% block content %}
-    <header class="heading">
-
-        <a class="account-bar-button" href="{% url 'ordering:index' %}">
-            <i class="material-icons" style="font-size: 1.2em">home</i>
-        </a>
-
-        <h1 class="heading-title">{{ store.display_name }}</h1>
-
-        <ol class="account-bar">
-            <li>
-                <a class="account-bar-button" href="">
-                    <i class="material-icons icon-button nav-button" style="font-size: 1.2em">shopping_cart</i>
-                </a>
-                {% if products_in_cart %}
-                <div class="icon-notification">
-                    {{ products_in_cart|length }}
-                </div>
-                {% endif %}
-            </li>
-            <li class="profile-dropper">
-                <a class="account-bar-button profile-button">
-                    <i class="icon-button nav-button material-icons" style="font-size: 1.2em">person</i>
-                </a>
-                <div class="profile-dropdown">
-                    <a href="{% url 'logout' %}" class="logout-button">
-                        Logout
-                    </a>
-                </div>
-            </li>
-        </ol>
-
-    </header>
-
-    <div class="content">
+     <div class="content">
 
         <div class="content-left-menu">
             <ul class="left-menu-list">
