@@ -44,6 +44,10 @@
             justify-content: center;
         }
 
+        .account-bar-button:hover {
+            opacity: 1;
+        }
+
         .account-bar-button:visited {
             color: black;
         }
