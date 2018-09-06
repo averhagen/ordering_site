@@ -29,6 +29,9 @@
                 </div>
                 {% endif %}
             </li>
+
+            {% block profile-button %}
+            {% if user.is_authenticated %}
             <li class="profile-dropper">
                 <a class="account-bar-button profile-button">
                     <i class="icon-button nav-button material-icons" style="font-size: 1.2em">person</i>
@@ -39,6 +42,8 @@
                     </a>
                 </div>
             </li>
+            {% endif %}
+            {% endblock profile-button %}
         </ol>
 
     </header>
