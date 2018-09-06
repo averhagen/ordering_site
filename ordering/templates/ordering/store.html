@@ -13,6 +13,11 @@
 <body>
 
     <header class="heading">
+
+        <a class="account-bar-button" href="{% url 'ordering:index' %}">
+            <i class="material-icons" style="font-size: 1.2em">home</i>
+        </a>
+
         <h1 class="heading-title">{{ store.display_name }}</h1>
 
         <ol class="account-bar">
