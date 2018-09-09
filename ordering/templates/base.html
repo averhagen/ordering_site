@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header class="heading">
+    <header>
 
         <a class="account-bar-button" href="{% url 'ordering:index' %}">
             <i class="material-icons" style="font-size: 1.2em">home</i>
@@ -19,7 +19,7 @@
         <h1 class="heading-title">{% block page-heading %}Order-It{% endblock %}</h1>
 
         <ol class="account-bar">
-            <li>
+            <li class="account-bar-item shopping-cart-dropper">
                 <a class="account-bar-button" href="">
                     <i class="material-icons icon-button nav-button" style="font-size: 1.2em">shopping_cart</i>
                 </a>
@@ -28,18 +28,25 @@
                     {{ products_in_cart|length }}
                 </div>
                 {% endif %}
+
+                <div class="account-bar-dropdown shopping-cart-dropdown">
+                    <ul class="account-bar-dropdown-list">
+                        <li class="account-bar-dropdown-item">hello</li>
+                    </ul>
             </li>
 
             {% block profile-button %}
             {% if user.is_authenticated %}
-            <li class="profile-dropper">
-                <a class="account-bar-button profile-button">
+            <li class="account-bar-item profile-dropper">
+                <a class="account-bar-button">
                     <i class="icon-button nav-button material-icons" style="font-size: 1.2em">person</i>
                 </a>
-                <div class="profile-dropdown">
-                    <a href="{% url 'logout' %}" class="logout-button">
-                        Logout
-                    </a>
+                <div class="account-bar-dropdown profile-dropdown">
+                    <ul class="account-bar-dropdown-list">
+                        <li class="account-bar-dropdown-item">
+                                <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+                        </li>
+                    </ul>
                 </div>
             </li>
             {% endif %}
