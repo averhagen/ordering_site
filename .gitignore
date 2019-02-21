@@ -1,5 +1,8 @@
 node_modules
 
+# VS CODE
+.vscode
+
 # Data
 *.sqlite3
 
