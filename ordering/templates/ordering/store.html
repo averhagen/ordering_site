@@ -29,19 +29,9 @@
         <form action="{% url 'ordering:add_to_cart' store.id category.id %}" method="POST" class="content-middle">
             {% csrf_token %}
             {% for product in category.get_products %}
-            <div class="product-selection">
-                <div class="product-image-container">
-                    <div class="product-image">
-
-                    </div>
-                    <div class="actions">
-                        <button name="more_info" class="material-icons icon-button action" style="font-size: 2.0em">zoom_in</button>
-                        <button name="product_to_add" type="submit" value="{{ product.id }}" class="material-icons icon-button action" style="font-size: 2.0em">add_shopping_cart</button>
-                    </div>
-                </div>
-                <p>{{ product.name }}</p>
-                <p>Price: {{ product.price }}</p>
-            </div>
+            
+                {% include "components/box_selection.html" %}
+                
             {% endfor %}
         </form>
         {% endif %}
