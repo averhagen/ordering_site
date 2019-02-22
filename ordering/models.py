@@ -4,7 +4,7 @@ from django.dispatch import receiver
 from djmoney.models.fields import MoneyField
 from django.contrib.auth.models import User
 
-
+from .components import BoxSelection
 import logging
 
 
@@ -14,6 +14,11 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def convert_to_box_selection(self):
+        price_text = "Price: %s" % self.price
+
+        return BoxSelection(self.name, price_text, self.id) 
 
 
 class Profile(models.Model):

@@ -32,11 +32,19 @@ def store(request, store_identifier, store_category_id=''):
     category = Category.find_category_given_category_pk_and_store_pk(
         category_pk=store_category_id, store_pk=store_result.id)
 
+    category_products = category.get_products()
+
+    displayed_items = [
+            category_product.convert_to_box_selection() for category_product in category_products]
+    
+    print(displayed_items)
+            
+
     products_in_cart = OrderProduct.get_products_in_cart_for_user(
         user_pk=request.user.pk)
 
     context = {'store': store_result, 'category': category,
-               'products_in_cart': products_in_cart}
+               'displayed_items': displayed_items, 'products_in_cart': products_in_cart }
     return render(request, 'ordering/store.html', context)
 
 

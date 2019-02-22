@@ -5,9 +5,9 @@
         </div>
         <div class="actions">
             <button name="more_info" class="material-icons icon-button action" style="font-size: 2.0em">zoom_in</button>
-            <button name="product_to_add" type="submit" value="{{ product.id }}" class="material-icons icon-button action" style="font-size: 2.0em">add_shopping_cart</button>
+            <button name="product_to_add" type="submit" value="{{ box_selection.add_button_value }}" class="material-icons icon-button action" style="font-size: 2.0em">add_shopping_cart</button>
         </div>
     </div>
-    <p>{{ product.name }}</p>
-    <p>Price: {{ product.price }}</p>
+    <p>{{ box_selection.primary_text }}</p>
+    <p>{{ box_selection.secondary_text }}</p>
 </div>

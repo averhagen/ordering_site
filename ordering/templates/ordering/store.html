@@ -25,13 +25,13 @@
             </ul>
         </div>
 
-        {% if category %}
+        {% if displayed_items %}
         <form action="{% url 'ordering:add_to_cart' store.id category.id %}" method="POST" class="content-middle">
             {% csrf_token %}
-            {% for product in category.get_products %}
-            
+            {% for box_selection in displayed_items %}
+
                 {% include "components/box_selection.html" %}
-                
+
             {% endfor %}
         </form>
         {% endif %}
