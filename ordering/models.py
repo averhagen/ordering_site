@@ -61,7 +61,7 @@ class Store(models.Model):
     def __str__(self):
         return self.display_name
 
-    def get_menu_options_sorted_by_display_order(self):
+    def get_categories_sorted_by_display_order(self):
         return self.category_set.all().order_by('display_order')
 
 
