@@ -9,42 +9,20 @@
 {% endblock page-heading %}
 
 {% block content %}
-     <div class="content">
+<div class="content">
 
-        <div class="content-left-menu">
-            <ul class="left-menu-list">
-                {% for category_selection in store.get_menu_options_sorted_by_display_order %}
-                <li class="left-menu-list-item {% if category and category.id == category_selection.id %}active-menu-selection{% endif %}">
-                    <a href="{% url 'ordering:store' store.url_identifying_name category_selection.id %}" class="left-menu-selection">
-                        <div>
-                            {{ category_selection.display_name }}
-                        </div>
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
+    {% include "components/side_menu.html" %}
 
-        {% if category %}
-        <form action="{% url 'ordering:add_to_cart' store.id category.id %}" method="POST" class="content-middle">
-            {% csrf_token %}
-            {% for product in category.get_products %}
-            <div class="product-selection">
-                <div class="product-image-container">
-                    <div class="product-image">
+    {% if displayed_items %}
+    <form action="{% url 'ordering:add_to_cart' store.id category.id %}" method="POST" class="content-middle">
+        {% csrf_token %}
+        {% for box_selection in displayed_items %}
 
-                    </div>
-                    <div class="actions">
-                        <button name="more_info" class="material-icons icon-button action" style="font-size: 2.0em">zoom_in</button>
-                        <button name="product_to_add" type="submit" value="{{ product.id }}" class="material-icons icon-button action" style="font-size: 2.0em">add_shopping_cart</button>
-                    </div>
-                </div>
-                <p>{{ product.name }}</p>
-                <p>Price: {{ product.price }}</p>
-            </div>
-            {% endfor %}
-        </form>
-        {% endif %}
+        {% include "components/box_selection.html" %}
 
-    </div>
+        {% endfor %}
+    </form>
+    {% endif %}
+
+</div>
 {% endblock content %}

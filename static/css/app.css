@@ -122,6 +122,16 @@
             display: flex;
         }
 
+/*          Components               */
+
+        .box-selection {
+            margin: 20px;
+            display: block;
+        }
+
+/*          Comoponents End               */
+
+
 /*          Left-Menu-Bar               */
 
         .content-left-menu {
@@ -184,11 +194,6 @@
             flex-wrap: wrap;
             flex-grow: 1;
             background: white;
-        }
-
-        .product-selection {
-            margin: 20px;
-            display: block;
         }
 
         .product-image-container {
