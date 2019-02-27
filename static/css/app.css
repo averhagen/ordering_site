@@ -117,6 +117,7 @@
 /*          Heading End               */
 
         .content {
+            height: 100%;
             flex-flow: row nowrap;
             flex-grow: 1;
             display: flex;
@@ -189,7 +190,7 @@
 /*              Middle Content              */
 
         .content-middle {
-            height: 100%;
+            overflow: auto;
             display: flex;
             flex-wrap: wrap;
             flex-grow: 1;
