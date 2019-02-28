@@ -50,7 +50,7 @@ def store(request, store_identifier, store_category_id=''):
     else:
         displayed_items = []
         
-    context = {'store': store_result, 'category': category, 'menu_selections': menu_selections,
+    context = {'store': store_result, 'category': selected_category, 'menu_selections': menu_selections,
                'displayed_items': displayed_items, 'products_in_cart': products_in_cart }
     return render(request, 'ordering/store.html', context)
 
