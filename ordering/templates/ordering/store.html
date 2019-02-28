@@ -4,6 +4,10 @@
 {{ store.display_name }}
 {% endblock title %}
 
+{% block theme_link %}
+<link rel="stylesheet" href="{% url 'ordering:theme' store.id %}">
+{% endblock theme_link %}
+
 {% block page-heading %}
 {{ store.display_name }}
 {% endblock page-heading %}

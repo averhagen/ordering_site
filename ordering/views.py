@@ -25,6 +25,11 @@ def index(request):
 
 
 @logged_function
+def theme(request, store_id):
+    return render(request, 'theme.css', [])
+
+
+@logged_function
 @login_required
 def store(request, store_identifier, store_category_id=''):
     store_result = get_object_or_404(
