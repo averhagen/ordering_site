@@ -65,6 +65,11 @@ class Store(models.Model):
         return self.category_set.all().order_by('display_order')
 
 
+class StoreStyle(models.Model):
+    primary_color = models.CharField(max_length=50)
+    secondary_color = models.CharField(max_length=50)
+
+
 class Order(models.Model):
     ORDER_STATES = (
         ('IC', 'In-Cart'),

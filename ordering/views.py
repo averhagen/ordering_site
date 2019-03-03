@@ -25,8 +25,10 @@ def index(request):
 
 
 @logged_function
-def theme(request, store_id):
-    return render(request, 'theme.css', [])
+def store_style(request, store_id):
+    response = render(request, 'theme.css', {})
+    response['Content-Type'] = 'text/css'
+    return response
 
 
 @logged_function
