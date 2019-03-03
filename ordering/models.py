@@ -62,6 +62,9 @@ class StoreStyle(models.Model):
     primary_color = ColorField(default="#FF0000", null=False)
     secondary_color = ColorField(default="#FF00FF", null=False)
 
+    def __str__(self):
+        return self.name
+
 class Store(models.Model):
     display_name = models.CharField(max_length=200)
     url_identifying_name = models.CharField(max_length=20)
