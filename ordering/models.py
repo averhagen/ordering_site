@@ -4,6 +4,8 @@ from django.dispatch import receiver
 from djmoney.models.fields import MoneyField
 from django.contrib.auth.models import User
 
+from colorfield.fields import ColorField
+
 from .components import BoxSelection
 import logging
 
@@ -66,8 +68,8 @@ class Store(models.Model):
 
 
 class StoreStyle(models.Model):
-    primary_color = models.CharField(max_length=50)
-    secondary_color = models.CharField(max_length=50)
+    primary_color = ColorField(default="#FF0000")
+    secondary_color = ColorField(default="#FF00FF")
 
 
 class Order(models.Model):
