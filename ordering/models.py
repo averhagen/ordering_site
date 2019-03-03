@@ -56,20 +56,22 @@ def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
 
 
+class StoreStyle(models.Model):
+    DEFAULT_ID = 0
+    name = models.CharField(max_length=200, default="Color Style" ,null=False)
+    primary_color = ColorField(default="#FF0000", null=False)
+    secondary_color = ColorField(default="#FF00FF", null=False)
+
 class Store(models.Model):
     display_name = models.CharField(max_length=200)
     url_identifying_name = models.CharField(max_length=20)
+    style = models.ForeignKey(StoreStyle, default=StoreStyle.DEFAULT_ID, on_delete=models.SET_DEFAULT, null=False)
 
     def __str__(self):
         return self.display_name
 
     def get_categories_sorted_by_display_order(self):
         return self.category_set.all().order_by('display_order')
-
-
-class StoreStyle(models.Model):
-    primary_color = ColorField(default="#FF0000")
-    secondary_color = ColorField(default="#FF00FF")
 
 
 class Order(models.Model):
