@@ -4,6 +4,8 @@ from django.dispatch import receiver
 from djmoney.models.fields import MoneyField
 from django.contrib.auth.models import User
 
+from colorfield.fields import ColorField
+
 from .components import BoxSelection
 import logging
 
@@ -54,9 +56,19 @@ def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
 
 
+class StoreStyle(models.Model):
+    DEFAULT_ID = 0
+    name = models.CharField(max_length=200, default="Color Style" ,null=False)
+    primary_color = ColorField(default="#FF0000", null=False)
+    secondary_color = ColorField(default="#FF00FF", null=False)
+
+    def __str__(self):
+        return self.name
+
 class Store(models.Model):
     display_name = models.CharField(max_length=200)
     url_identifying_name = models.CharField(max_length=20)
+    style = models.ForeignKey(StoreStyle, default=StoreStyle.DEFAULT_ID, on_delete=models.SET_DEFAULT, null=False)
 
     def __str__(self):
         return self.display_name

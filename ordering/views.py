@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.urls import urlpatterns
 from django.contrib.auth.models import User
 
-from .models import Store, Category, OrderProduct, Profile
+from .models import Store, StoreStyle, Category, OrderProduct, Profile
 from .components import MenuSelection
 from .utils.logs import logged_function
 
@@ -22,6 +22,15 @@ def index(request):
     context = {'stores': stores }
     
     return render(request, 'ordering/index.html', context)
+
+
+@logged_function
+def store_style(request, style_id):
+    style = get_object_or_404(StoreStyle, id=style_id)
+    context = {'primary_color': style.primary_color, 'secondary_color': style.secondary_color}
+    response = render(request, 'theme.css', context)
+    response['Content-Type'] = 'text/css'
+    return response
 
 
 @logged_function

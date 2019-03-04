@@ -1,0 +1,7 @@
+.primary_background_color {
+    background: {{ primary_color }};
+}
+
+.secondary_background_color {
+    background: {{ secondary_color }};
+}
