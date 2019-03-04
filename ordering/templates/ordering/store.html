@@ -5,7 +5,7 @@
 {% endblock title %}
 
 {% block theme_link %}
-<link rel="stylesheet" href="{% url 'ordering:theme' store.id %}" type="text/css">
+<link rel="stylesheet" href="{% url 'ordering:store_style' store.style.id %}" type="text/css">
 {% endblock theme_link %}
 
 {% block page-heading %}
