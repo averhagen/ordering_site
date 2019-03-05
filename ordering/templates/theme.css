@@ -6,6 +6,10 @@
     background: {{ secondary_color }};
 }
 
-.secondary_selected_color {
-    background: {{ secondary_selected_color }};
+.tertiary_color {
+    background: {{ tertiary_color }};
+}
+
+.on_hover_tertiary_color:hover {
+    background: {{ tertiary_color }};
 }
