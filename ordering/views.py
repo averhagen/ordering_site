@@ -28,7 +28,7 @@ def index(request):
 def store_style(request, style_id):
     style = get_object_or_404(StoreStyle, id=style_id)
     context = {'primary_color': style.primary_color, 'secondary_color': style.secondary_color}
-    context['secondary_selected_color'] = style.secondary_selected_color
+    context['tertiary_color'] = style.tertiary_color
     response = render(request, 'theme.css', context)
     response['Content-Type'] = 'text/css'
     return response
