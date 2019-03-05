@@ -21,7 +21,7 @@
 
         <ol class="account-bar">
             <li class="account-bar-item shopping-cart-dropper">
-                <a class="account-bar-button" href="">
+                <a class="on_hover_tertiary_color account-bar-button" href="">
                     <i class="material-icons icon-button nav-button" style="font-size: 1.2em">shopping_cart</i>
                 </a>
                 {% if products_in_cart %}
@@ -32,20 +32,20 @@
 
                 <div class="account-bar-dropdown shopping-cart-dropdown">
                     <ul class="account-bar-dropdown-list">
-                        <li class="account-bar-dropdown-item">hello</li>
+                        <li class="on_hover_tertiary_color secondary_background_color account-bar-dropdown-item">hello</li>
                     </ul>
             </li>
 
             {% block profile-button %}
             {% if user.is_authenticated %}
             <li class="account-bar-item profile-dropper">
-                <a class="account-bar-button">
+                <a class="on_hover_tertiary_color account-bar-button">
                     <i class="icon-button nav-button material-icons" style="font-size: 1.2em">person</i>
                 </a>
                 <div class="account-bar-dropdown profile-dropdown">
                     <ul class="account-bar-dropdown-list">
-                        <li class="account-bar-dropdown-item">
-                                <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+                        <li class="secondary_background_color account-bar-dropdown-item">
+                                <a href="{% url 'logout' %}" class="on_hover_tertiary_color logout-button">Logout</a>
                         </li>
                     </ul>
                 </div>
