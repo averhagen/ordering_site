@@ -61,6 +61,7 @@ class StoreStyle(models.Model):
     name = models.CharField(max_length=200, default="Color Style" ,null=False)
     primary_color = ColorField(default="#FF0000", null=False)
     secondary_color = ColorField(default="#FF00FF", null=False)
+    secondary_selected_color = ColorField(default="#a9a9a9", null=False)
 
     def __str__(self):
         return self.name
