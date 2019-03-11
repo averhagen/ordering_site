@@ -14,15 +14,15 @@
     <header class="primary_background_color">
 
         <a class="on_hover_tertiary_color account-bar-button" href="{% url 'ordering:index' %}">
-            <i class="material-icons" style="font-size: 1.2em">home</i>
+            <i class="theme_font_color material-icons" style="font-size: 1.2em">home</i>
         </a>
 
-        <h1 class="heading-title">{% block page-heading %}Order-It{% endblock %}</h1>
+        <h1 class="theme_font_color heading-title">{% block page-heading %}Order-It{% endblock %}</h1>
 
         <ol class="account-bar">
             <li class="account-bar-item shopping-cart-dropper">
                 <a class="on_hover_tertiary_color account-bar-button" href="">
-                    <i class="material-icons icon-button nav-button" style="font-size: 1.2em">shopping_cart</i>
+                    <i class="theme_font_color material-icons icon-button nav-button" style="font-size: 1.2em">shopping_cart</i>
                 </a>
                 {% if products_in_cart %}
                 <div class="icon-notification">
@@ -32,7 +32,7 @@
 
                 <div class="account-bar-dropdown shopping-cart-dropdown">
                     <ul class="account-bar-dropdown-list">
-                        <li class="on_hover_tertiary_color secondary_background_color account-bar-dropdown-item">hello</li>
+                        <li class="theme_font_color on_hover_tertiary_color secondary_background_color account-bar-dropdown-item">hello</li>
                     </ul>
             </li>
 
@@ -40,12 +40,12 @@
             {% if user.is_authenticated %}
             <li class="account-bar-item profile-dropper">
                 <a class="on_hover_tertiary_color account-bar-button">
-                    <i class="icon-button nav-button material-icons" style="font-size: 1.2em">person</i>
+                    <i class="theme_font_color icon-button nav-button material-icons" style="font-size: 1.2em">person</i>
                 </a>
                 <div class="account-bar-dropdown profile-dropdown">
                     <ul class="account-bar-dropdown-list">
                         <li class="secondary_background_color account-bar-dropdown-item">
-                                <a href="{% url 'logout' %}" class="on_hover_tertiary_color logout-button">Logout</a>
+                                <a href="{% url 'logout' %}" class="theme_font_color on_hover_tertiary_color logout-button">Logout</a>
                         </li>
                     </ul>
                 </div>

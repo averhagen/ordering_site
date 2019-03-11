@@ -1,9 +1,9 @@
 <div class="secondary_background_color content-left-menu">
     <ul class="left-menu-list">
         {% for menu_selection in menu_selections %}
-        <li class="left-menu-list-item {% if menu_selection.is_selected %}tertiary_color active-menu-selection{% endif %}">
+        <li class="theme_font_color left-menu-list-item {% if menu_selection.is_selected %}tertiary_color active-menu-selection{% endif %}">
             <a href="{{ menu_selection.url }}" class="left-menu-selection">
-                <div>
+                <div class="theme_font_color">
                     {{ menu_selection.display_name }}
                 </div>
             </a>

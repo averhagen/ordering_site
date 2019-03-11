@@ -13,3 +13,7 @@
 .on_hover_tertiary_color:hover {
     background: {{ tertiary_color }};
 }
+
+.theme_font_color {
+    color: {{ font_color }};
+}
